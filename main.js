@@ -1,13 +1,70 @@
+const headerContainer = document.createElement("header");
+headerContainer.classList.add("header-container");
+console.log(headerContainer);
+document.body.appendChild(headerContainer);
+
+const title = document.createElement("h1");
+title.setAttribute("id", "title")
+title.textContent="Etch-A-Sketch";
+headerContainer.appendChild(title);
+
+
+
 const container = document.createElement("div");
 container.classList.add("grid-container");
-container.textContent="grid-container";
+
 console.log(container);
 document.body.appendChild(container);
 
-const gridBox = document.createElement("div");
-gridBox.classList.add("gridBox");
-gridBox.textContent="gridbox";
-container.appendChild(gridBox);
+
+
+
+
+
+function setupGrid() {
+    for (let i = 0; i < 1 * 256; i++) {
+      const gridBox = document.createElement('div');
+      gridBox.classList.add("gridBox");
+      gridBox.textContent="grid box";
+      container.appendChild(gridBox)
+    }
+}
+
+setupGrid()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const footer = document.createElement("footer");
 footer.setAttribute("id", "footer-container");
