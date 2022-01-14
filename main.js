@@ -11,9 +11,9 @@ headerContainer.appendChild(title);
 
 
 
-//adds main container div
-const container = document.createElement("div");
-container.classList.add("grid-container");
+//adds main container
+const container = document.createElement("main");
+container.classList.add("main-container");
 document.body.appendChild(container);
 
 //adds options div
@@ -22,7 +22,7 @@ optionsContainer.classList.add("options-container");
 document.body.appendChild(optionsContainer);
 
 
-//things to do:
+//things to do: makes the buttons work. resume working on these below
 
 //choose any color mode in options
 const color = document.createElement("button");
@@ -49,45 +49,18 @@ const clear = document.createElement("button");
 clear.setAttribute("id", "clear");
 clear.textContent="Clear";
 optionsContainer.appendChild(clear);
-
 //ask for new number of squares in options slider/buttons format
 
 
 
 function setupGrid() {
-    for (let i = 0; i < 1 * 256; i++) {
+    for (let i = 0; i < 256; i++) {
       const gridBox = document.createElement('div');
       gridBox.classList.add("gridBox");
-      gridBox.textContent="grid box";
       container.appendChild(gridBox)
     }
 }
-
-setupGrid()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+setupGrid();
 
 
 
