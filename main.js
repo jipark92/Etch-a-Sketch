@@ -32,7 +32,7 @@ optionsContainer.appendChild(color);
 //default color mode: black in option
 const defaultColor = document.createElement("button");
 defaultColor.setAttribute("id", "default-color");
-defaultColor.textContent="Default";
+
 optionsContainer.appendChild(defaultColor);
 //optional: rainbow mode
 const rainbow = document.createElement("button");
@@ -52,26 +52,30 @@ optionsContainer.appendChild(clear);
 //ask for new number of squares in options slider/buttons format
 
 
-function setupGrid() {
-
-    let grid = 256;
-
-    for (let i = 0; i < grid; i++) {
-      const gridBox = document.createElement('div');
-      gridBox.classList.add("gridBox");
-     
-      container.appendChild(gridBox);
-    }
+function gridBox(col, rows){
+  for(let i=0;i<(col * rows);i++){
+    const div = document.createElement('div');
+    div.style.border = '1px solid white'
+    container.style.gridTemplateColumns = `repeat(${col}, 1fr`;
+    container.style.gridTemplateRows = `repeat(${rows}, 1fr`;
+    container.appendChild(div).classList.add('grid-box')
+  }
 }
-setupGrid();
 
-const boxes = document.querySelector('.gridBox');
+gridBox(16,16)
 
-boxes.addEventListener('mouseenter', whitePaint());
+function blackPaint(){
+  const gridboxs = container.querySelectorAll('.grid-box')
+  defaultColor.textContent="Black";
+  defaultColor.addEventListener('click',()=> {
+    gridboxs.forEach(box => box.addEventListener('mouseover',() =>{
+      box.style.background = 'black';
+    }))
+  })
 
-function whitePaint () {
-  boxes.style.backgroundColor = 'white';
-}   
+}
+blackPaint();
+
 
 
 const footer = document.createElement("footer");
