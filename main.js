@@ -52,24 +52,26 @@ optionsContainer.appendChild(clear);
 //ask for new number of squares in options slider/buttons format
 
 
-
 function setupGrid() {
-    for (let i = 0; i < 256; i++) {
+
+    let grid = 256;
+
+    for (let i = 0; i < grid; i++) {
       const gridBox = document.createElement('div');
       gridBox.classList.add("gridBox");
-      container.appendChild(gridBox)
+     
+      container.appendChild(gridBox);
     }
 }
 setupGrid();
 
+const boxes = document.querySelector('.gridBox');
 
+boxes.addEventListener('mouseenter', whitePaint());
 
-
-
-
-
-
-
+function whitePaint () {
+  boxes.style.backgroundColor = 'white';
+}   
 
 
 const footer = document.createElement("footer");

@@ -34,10 +34,12 @@ body {
 
 .gridBox {
     border: 1px solid black;
-    background-color: white;
-    
+    transition-duration: 500ms;
 }
 
+.gridBox:hover {
+    
+}
 
 
 #footer-container {
