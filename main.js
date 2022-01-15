@@ -26,7 +26,7 @@ document.body.appendChild(optionsContainer);
 //default color mode: black in option
 const defaultColor = document.createElement("button");
 defaultColor.setAttribute("id", "default-color");
-defaultColor.textContent="Default Color Mode"; // sets button text to "black"
+defaultColor.textContent="Default Color Mode"; 
 optionsContainer.appendChild(defaultColor);
 
 //optional: rainbow mode
@@ -89,7 +89,7 @@ eraserPaint(); //calls for eraser function
 
 function clearMode() { //clears grid by refreshing page(lazy way)
   const clearGrid = document.querySelector('#clear'); //selects clear button
-  clearGrid.onclick = () => { // clear grid/refresh page when mouse CLICKS.
+  clearGrid.onclick = () => { // clear grid/refresh page when mouse clicks on the button.
     window.location.reload(); // method to refresh page.
   }
 }

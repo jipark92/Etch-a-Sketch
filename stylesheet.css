@@ -80,20 +80,17 @@ body {
     
 }
 
-#color{
-    font-family: 'Source Code Pro', monospace;
-    font-size: 20px;
-    margin: 10px;
-    padding: 15px;
-    background-color: white;
-}
+
 
 #default-color {
     background-color: white;
     font-family: 'Source Code Pro', monospace;
     font-size: 20px;
     margin: 10px;
-    padding: 15px
+    padding: 15px;
+    border-radius: 10px;
+
+   
 }
 
 #rainbow {
@@ -101,7 +98,8 @@ body {
     font-family: 'Source Code Pro', monospace;
     font-size: 20px;
     margin: 10px;
-    padding: 15px
+    padding: 15px;
+    border-radius: 10px;
     
 }
 
@@ -110,7 +108,8 @@ body {
     font-family: 'Source Code Pro', monospace;
     font-size: 20px;
     margin: 10px;
-    padding: 15px
+    padding: 15px;
+    border-radius: 10px;
     
 }
 
@@ -119,6 +118,7 @@ body {
     font-family: 'Source Code Pro', monospace;
     font-size: 20px;
     margin: 10px;
-    padding: 15px
+    padding: 15px;
+    border-radius: 10px;
     
 }
