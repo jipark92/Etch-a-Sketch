@@ -22,9 +22,6 @@ optionsContainer.classList.add("options-container");
 document.body.appendChild(optionsContainer);
 
 
-//things to do: makes the buttons work. resume working on these below
-
-
 
 //default color mode: black in option
 const defaultColor = document.createElement("button");
@@ -47,7 +44,7 @@ optionsContainer.appendChild(eraser);
 //clear grid in options buttons format 
 const clear = document.createElement("button");
 clear.setAttribute("id", "clear");
-clear.textContent="Clear(not working right now)";
+clear.textContent="Clear";
 optionsContainer.appendChild(clear);
 //ask for new number of squares in options slider/buttons format
 
@@ -76,9 +73,9 @@ function blackPaint(){ //black painter/marker/change background color function.
   })
 
 }
-blackPaint(); //calls blackPaint function
+blackPaint(); //calls for blackPaint function
 
-function eraserPaint(){ //black painter/marker/change background color function.
+function eraserPaint(){ //eraser function that changes background color to default background color.
   const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
   eraser.addEventListener('click',()=> { // upon clicking the eraser button, it allows to change color.
     gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
@@ -90,7 +87,13 @@ function eraserPaint(){ //black painter/marker/change background color function.
 eraserPaint(); //calls for eraser function
 
 
-
+function clearMode() { //clears grid by refreshing page(lazy way)
+  const clearGrid = document.querySelector('#clear'); //selects clear button
+  clearGrid.onclick = () => { // clear grid/refresh page when mouse CLICKS.
+    window.location.reload(); // method to refresh page.
+  }
+}
+clearMode(); //calls for clear grid/refresh page function
  
 
 
