@@ -29,7 +29,7 @@ defaultColor.setAttribute("id", "default-color");
 defaultColor.textContent="Default Color Mode"; 
 optionsContainer.appendChild(defaultColor);
 
-//optional: rainbow mode
+//optional to do: rainbow mode**************
 const rainbow = document.createElement("button");
 rainbow.setAttribute("id", "rainbow");
 rainbow.textContent="Rainbow(not working right now)";
