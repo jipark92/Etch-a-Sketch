@@ -17,6 +17,12 @@ body {
 
 }
 
+.heaeader-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 
 #title {    
     font-family: 'Montserrat', sans-serif;
@@ -41,6 +47,7 @@ body {
 
 .grid-box {
   display: grid;
+  border: 1px solid white;
    
     
 }
@@ -69,6 +76,7 @@ body {
     align-content: center;
     margin: 10px;
     border: 2px solid black;
+    width: 100%;
     
 }
 

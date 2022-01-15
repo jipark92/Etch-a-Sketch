@@ -27,54 +27,59 @@ document.body.appendChild(optionsContainer);
 //choose any color mode in options
 const color = document.createElement("button");
 color.setAttribute("id", "color");
-color.textContent="Color";
+color.textContent="Color (not working right now)";
 optionsContainer.appendChild(color);
 //default color mode: black in option
 const defaultColor = document.createElement("button");
 defaultColor.setAttribute("id", "default-color");
-
+defaultColor.textContent="Black"; // sets button text to "black"
 optionsContainer.appendChild(defaultColor);
 //optional: rainbow mode
 const rainbow = document.createElement("button");
 rainbow.setAttribute("id", "rainbow");
-rainbow.textContent="Rainbow";
+rainbow.textContent="Rainbow(not working right now)";
 optionsContainer.appendChild(rainbow);
 //eraser in options
 const eraser = document.createElement("button");
+eraser.textContent="Eraser(not working right now)"
 eraser.setAttribute("id", "eraser");
-eraser.textContent="Eraser";
+
 optionsContainer.appendChild(eraser);
 //clear grid in options buttons format 
 const clear = document.createElement("button");
 clear.setAttribute("id", "clear");
-clear.textContent="Clear";
+clear.textContent="Clear(not working right now)";
 optionsContainer.appendChild(clear);
 //ask for new number of squares in options slider/buttons format
 
 
-function gridBox(col, rows){
-  for(let i=0;i<(col * rows);i++){
-    const div = document.createElement('div');
-    div.style.border = '1px solid white'
-    container.style.gridTemplateColumns = `repeat(${col}, 1fr`;
-    container.style.gridTemplateRows = `repeat(${rows}, 1fr`;
-    container.appendChild(div).classList.add('grid-box')
+
+
+
+
+function gridBox(columns, rows){ //function to draw grid
+  for(let i=0;i<(columns * rows);i++){ // cols * rows = the grid size
+    const div = document.createElement('div'); //creates DIV element on body
+    container.style.gridTemplateColumns = `repeat(${columns}, 1fr`; // makes columns and 1 fraction size 
+    container.style.gridTemplateRows = `repeat(${rows}, 1fr`; //makes rows and 1 fraction size
+    container.appendChild(div).classList.add('grid-box')//adds div "class grid-box" to "div class main-container"
   }
 }
 
-gridBox(16,16)
+gridBox(16,16) // marks default grid size 16x16
 
-function blackPaint(){
-  const gridboxs = container.querySelectorAll('.grid-box')
-  defaultColor.textContent="Black";
-  defaultColor.addEventListener('click',()=> {
-    gridboxs.forEach(box => box.addEventListener('mouseover',() =>{
-      box.style.background = 'black';
+function blackPaint(){ //black painter/marker/change background color function.
+  const gridboxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
+  defaultColor.addEventListener('click',()=> { // upon clicking the button, it allows to change color.
+    gridboxs.forEach(box => box.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
+      box.style.background = 'black'; // change background color
     }))
   })
 
 }
 blackPaint();
+
+
 
 
 
