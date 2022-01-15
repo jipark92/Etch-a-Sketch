@@ -24,16 +24,12 @@ document.body.appendChild(optionsContainer);
 
 //things to do: makes the buttons work. resume working on these below
 
-//choose any color mode in options
-const color = document.createElement("button");
-color.setAttribute("id", "color");
-color.textContent="Color (not working right now)";
-optionsContainer.appendChild(color);
+
 
 //default color mode: black in option
 const defaultColor = document.createElement("button");
 defaultColor.setAttribute("id", "default-color");
-defaultColor.textContent="Black"; // sets button text to "black"
+defaultColor.textContent="Default Color Mode"; // sets button text to "black"
 optionsContainer.appendChild(defaultColor);
 
 //optional: rainbow mode
@@ -45,7 +41,7 @@ optionsContainer.appendChild(rainbow);
 //eraser in options
 const eraser = document.createElement("button");
 eraser.setAttribute("id", "eraser");
-eraser.textContent="Eraser"
+eraser.textContent="Eraser Mode"
 optionsContainer.appendChild(eraser);
 
 //clear grid in options buttons format 
@@ -72,10 +68,10 @@ function gridBox(columns, rows){ //function to draw grid
 gridBox(16,16) // calls grid creation function. (marks default grid size 16x16)
 
 function blackPaint(){ //black painter/marker/change background color function.
-  const gridboxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
-  defaultColor.addEventListener('click',()=> { // upon clicking the button, it allows to change color.
-    gridboxs.forEach(box => box.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
-      box.style.background = 'black'; // change background color
+  const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
+  defaultColor.addEventListener('click',()=> { // upon clicking the default button, it allows to change color.
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
+      gridbox.style.background = 'black'; // change background color
     }))
   })
 
@@ -83,10 +79,10 @@ function blackPaint(){ //black painter/marker/change background color function.
 blackPaint(); //calls blackPaint function
 
 function eraserPaint(){ //black painter/marker/change background color function.
-  const gridboxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
-  eraser.addEventListener('click',()=> { // upon clicking the button, it allows to change color.
-    gridboxs.forEach(box => box.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
-      box.style.background = 'lightslategrey'; // change background color
+  const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
+  eraser.addEventListener('click',()=> { // upon clicking the eraser button, it allows to change color.
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
+      gridbox.style.background = 'lightslategrey'; // change background color
     }))
   })
 
@@ -94,6 +90,8 @@ function eraserPaint(){ //black painter/marker/change background color function.
 eraserPaint(); //calls for eraser function
 
 
+
+ 
 
 
 
