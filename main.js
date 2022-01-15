@@ -29,22 +29,25 @@ const color = document.createElement("button");
 color.setAttribute("id", "color");
 color.textContent="Color (not working right now)";
 optionsContainer.appendChild(color);
+
 //default color mode: black in option
 const defaultColor = document.createElement("button");
 defaultColor.setAttribute("id", "default-color");
 defaultColor.textContent="Black"; // sets button text to "black"
 optionsContainer.appendChild(defaultColor);
+
 //optional: rainbow mode
 const rainbow = document.createElement("button");
 rainbow.setAttribute("id", "rainbow");
 rainbow.textContent="Rainbow(not working right now)";
 optionsContainer.appendChild(rainbow);
+
 //eraser in options
 const eraser = document.createElement("button");
-eraser.textContent="Eraser(not working right now)"
 eraser.setAttribute("id", "eraser");
-
+eraser.textContent="Eraser"
 optionsContainer.appendChild(eraser);
+
 //clear grid in options buttons format 
 const clear = document.createElement("button");
 clear.setAttribute("id", "clear");
@@ -66,7 +69,7 @@ function gridBox(columns, rows){ //function to draw grid
   }
 }
 
-gridBox(16,16) // marks default grid size 16x16
+gridBox(16,16) // calls grid creation function. (marks default grid size 16x16)
 
 function blackPaint(){ //black painter/marker/change background color function.
   const gridboxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
@@ -77,7 +80,18 @@ function blackPaint(){ //black painter/marker/change background color function.
   })
 
 }
-blackPaint();
+blackPaint(); //calls blackPaint function
+
+function eraserPaint(){ //black painter/marker/change background color function.
+  const gridboxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
+  eraser.addEventListener('click',()=> { // upon clicking the button, it allows to change color.
+    gridboxs.forEach(box => box.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
+      box.style.background = 'lightslategrey'; // change background color
+    }))
+  })
+
+}
+eraserPaint(); //calls for eraser function
 
 
 
