@@ -46,7 +46,13 @@ const clear = document.createElement("button");
 clear.setAttribute("id", "clear");
 clear.textContent="Clear";
 optionsContainer.appendChild(clear);
-//ask for new number of squares in options slider/buttons format
+
+
+//new grid button
+const newGrids = document.createElement("button");
+newGrids.setAttribute("id", "new-grid");
+newGrids.textContent="New Grid";
+optionsContainer.appendChild(newGrids);
 
 
 
@@ -90,12 +96,28 @@ eraserPaint(); //calls for eraser function
 function clearMode() { //clears grid by refreshing page(lazy way)
   const clearGrid = document.querySelector('#clear'); //selects clear button
   clearGrid.onclick = () => { // clear grid/refresh page when mouse clicks on the button.
-    window.location.reload(); // method to refresh page.
+    window.location.reload();// method to refresh page
+    
   }
+  
 }
 clearMode(); //calls for clear grid/refresh page function
  
 
+function newGrid() {
+  const newGridBox = document.querySelector('#new-grid')
+  
+
+  newGridBox.addEventListener('click',()=>{
+    let x = prompt("how many rows?");
+    let y = prompt("how many columns?");
+    console.log(x,y);
+    gridBox(x,y);
+    
+  })
+  
+}
+newGrid();
 
 
 const footer = document.createElement("footer");
