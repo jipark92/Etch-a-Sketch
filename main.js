@@ -32,7 +32,7 @@ optionsContainer.appendChild(defaultColor);
 //optional to do: rainbow mode**************
 const rainbow = document.createElement("button");
 rainbow.setAttribute("id", "rainbow");
-rainbow.textContent="Rainbow";
+rainbow.textContent="Rainbow Mode";
 optionsContainer.appendChild(rainbow);
 
 //eraser in options
@@ -68,12 +68,12 @@ function gridBox(columns, rows){ //function to draw grid
   }
 }
 
-gridBox(16,16) // calls grid creation function. (marks default grid size 16x16)
+gridBox(16,16) // calls grid creation function. (injects 16 to columns and 16 to rows)
 
 function blackPaint(){ //black painter/marker/change background color function.
   const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
   defaultColor.addEventListener('click',()=> { // upon clicking the default button, it allows to change color.
-    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',() =>{//selects each div grid-box when mouse is on top of div
       gridbox.style.background = 'black'; // change background color
     }))
   })
@@ -87,7 +87,7 @@ blackPaint(); //calls for blackPaint function
 function rainbowPaint(){
   const gridBoxs = container.querySelectorAll('.grid-box');
   rainbow.addEventListener('click', () => {
-    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseover',()=>{
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',()=>{
       gridbox.style.background = randomRainbow();
     }))
   })
@@ -98,7 +98,7 @@ rainbowPaint()
 function eraserPaint(){ //eraser function that changes background color to default background color.
   const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
   eraser.addEventListener('click',()=> { // upon clicking the eraser button, it allows to change color.
-    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseover',() =>{//selects each div grid-box when mouse is on top of div
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',() =>{//selects each div grid-box when mouse is on top of div
       gridbox.style.background = 'lightslategrey'; // change background color
     }))
   })
