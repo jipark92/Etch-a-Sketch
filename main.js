@@ -32,7 +32,7 @@ optionsContainer.appendChild(defaultColor);
 //optional to do: rainbow mode**************
 const rainbow = document.createElement("button");
 rainbow.setAttribute("id", "rainbow");
-rainbow.textContent="Rainbow(not working right now)";
+rainbow.textContent="Rainbow";
 optionsContainer.appendChild(rainbow);
 
 //eraser in options
@@ -81,6 +81,20 @@ function blackPaint(){ //black painter/marker/change background color function.
 }
 blackPaint(); //calls for blackPaint function
 
+
+
+
+function rainbowPaint(){
+  const gridBoxs = container.querySelectorAll('.grid-box');
+  rainbow.addEventListener('click', () => {
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseover',()=>{
+      gridbox.style.background = randomRainbow();
+    }))
+  })
+}
+rainbowPaint()
+
+
 function eraserPaint(){ //eraser function that changes background color to default background color.
   const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
   eraser.addEventListener('click',()=> { // upon clicking the eraser button, it allows to change color.
@@ -113,12 +127,30 @@ function newGrid() {
     let y = prompt("how many columns?");
     console.log(x,y);
     gridBox(x,y);
-    
+
+    if ( x > 100 && y > 100){
+     
+      let newX = prompt("ERROR:please enter below 100 for rows");
+      let newY = prompt("ERROR:please enter below 100 for columns");
+
+      gridBox(newX, newY);
+    }
+   
+
   })
   
 }
 newGrid();
 
+
+function randomRainbow() {
+  let letters = "0123456789ABCDEF";
+    let color = "#";
+    for(let i=0; i <6; i++){
+        color += letters[Math.floor(Math.random() * 16)]
+    }
+    return color;
+}
 
 const footer = document.createElement("footer");
 footer.setAttribute("id", "footer-container");
