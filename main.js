@@ -60,15 +60,15 @@ optionsContainer.appendChild(newGrids);
 
 
 function gridBox(columns, rows){ //function to draw grid
+  columns = 16;
+  rows = 16;
   for(let i=0;i<(columns * rows);i++){ // cols * rows = the grid size
     const div = document.createElement('div'); //creates DIV element on body
-    container.style.gridTemplateColumns = `repeat(${columns}, 1fr`; // makes columns and 1 fraction size 
-    container.style.gridTemplateRows = `repeat(${rows}, 1fr`; //makes rows and 1 fraction size
     container.appendChild(div).classList.add('grid-box')//adds div "class grid-box" to "div class main-container"
   }
 }
 
-gridBox(16,16) // calls grid creation function. (injects 16 to columns and 16 to rows)
+gridBox() // calls grid creation function. (injects 16 to columns and 16 to rows)
 
 function blackPaint(){ //black painter/marker/change background color function.
   const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
@@ -84,11 +84,11 @@ blackPaint(); //calls for blackPaint function
 
 
 
-function rainbowPaint(){
-  const gridBoxs = container.querySelectorAll('.grid-box');
-  rainbow.addEventListener('click', () => {
-    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',()=>{
-      gridbox.style.background = randomRainbow();
+function rainbowPaint(){ //rainbow painter function
+  const gridBoxs = container.querySelectorAll('.grid-box');//selects class grid-box
+  rainbow.addEventListener('click', () => {// click button to make function work
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',()=>{//draws when mouse enters gridbox
+      gridbox.style.background = randomRainbow();//change to random color using random color generator function.
     }))
   })
 }
