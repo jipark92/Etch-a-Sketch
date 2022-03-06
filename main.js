@@ -68,7 +68,7 @@ function gridBox(columns, rows){ //function to draw grid
   }
 }
 
-gridBox() // calls grid creation function. (injects 16 to columns and 16 to rows)
+gridBox() // calls grid creation function. 
 
 function blackPaint(){ //black painter/marker/change background color function.
   const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
@@ -118,25 +118,25 @@ function clearMode() { //clears grid by refreshing page(lazy way)
 clearMode(); //calls for clear grid/refresh page function
  
 
+
+
+
 function newGrid() {
   const newGridBox = document.querySelector('#new-grid')
   
-
   newGridBox.addEventListener('click',()=>{
-    let x = prompt("how many rows?");
-    let y = prompt("how many columns?");
-    console.log(x,y);
-    gridBox(x,y);
+    let newRows = prompt("how many rows?");
+    let newColumns = prompt("how many columns?");
+    console.log(newRows, newColumns);
+    gridBox();    
 
-    if ( x > 100 && y > 100){
+    if ( newRows > 100 && newColumns > 100){
      
       let newX = prompt("ERROR:please enter below 100 for rows");
       let newY = prompt("ERROR:please enter below 100 for columns");
 
       gridBox(newX, newY);
-    }
-   
-
+    } 
   })
   
 }
