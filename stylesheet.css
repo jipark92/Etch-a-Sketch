@@ -34,7 +34,6 @@ body {
     height: 600px;
     width: 600px;
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
 }
 
 .grid-box {
