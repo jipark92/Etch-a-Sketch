@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction:column;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 }
 
@@ -20,24 +20,17 @@ body {
 
 #title {    
     font-family: 'Montserrat', sans-serif;
-    display:flex;
-    justify-content: center;
-    align-content: center;
-    margin: 30px;
-    font-size: 80px;
+    font-size: 5rem;
     border: 3px dashed black;
     border-radius: 10px;
-    text-shadow: 0 0 0.125em hsl(0, 0%, 100%), 0 0 0.25em currentColor;
+    text-shadow: 0 0 0.125em white, 0 0 0.25em currentColor;
 }
 
 .main-container{
     height: 600px;
     width: 600px;
     display: grid;
-}
-
-.grid-box {
-  border: 0.1rem solid gray;
+    border: 1px solid black;
 }
 
 #footer-container {
