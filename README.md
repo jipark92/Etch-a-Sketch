@@ -9,8 +9,18 @@ At the end of this project, I will have better understanding of creating HTML co
 
 tools used to learn how to create the project:
 
--google
--youtube
--stackoverflow
--from previous odin lessons.
--odin discord community 
+    -google
+
+    -youtube
+
+    -stackoverflow
+
+    -from previous odin lessons.
+
+    -odin discord community 
+
+
+
+
+Update: 3/6/2022.
+I have came back to this project to fix bugs and make extra features work. I have leanred alot since and coming back to fixing this project was another test to see if I know my javascript skill. 
