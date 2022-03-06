@@ -2,14 +2,12 @@
 const headerContainer = document.createElement("header");
 headerContainer.classList.add("header-container");
 document.body.appendChild(headerContainer);
+
 //creates title in h3
 const title = document.createElement("h1");
 title.setAttribute("id", "title")
 title.textContent="Etch-A-Sketch";
 headerContainer.appendChild(title);
-
-
-
 
 //adds main container
 const container = document.createElement("main");
@@ -20,8 +18,6 @@ document.body.appendChild(container);
 const optionsContainer = document.createElement("div");
 optionsContainer.classList.add("options-container");
 document.body.appendChild(optionsContainer);
-
-
 
 //default color mode: black in option
 const defaultColor = document.createElement("button");
@@ -47,19 +43,14 @@ clear.setAttribute("id", "clear");
 clear.textContent="Clear";
 optionsContainer.appendChild(clear);
 
-
 //new grid button
 const newGrids = document.createElement("button");
 newGrids.setAttribute("id", "new-grid");
 newGrids.textContent="New Grid";
 optionsContainer.appendChild(newGrids);
 
-
-
-
-
-
-function gridBox(columns, rows){ //function to draw grid
+//create grid
+function gridBox(columns, rows){ 
   columns = 16;
   rows = 16;
   for(let i=0;i<(columns * rows);i++){ // cols * rows = the grid size
@@ -67,9 +58,9 @@ function gridBox(columns, rows){ //function to draw grid
     container.appendChild(div).classList.add('grid-box')//adds div "class grid-box" to "div class main-container"
   }
 }
-
 gridBox() // calls grid creation function. 
 
+//create black painter
 function blackPaint(){ //black painter/marker/change background color function.
   const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
   defaultColor.addEventListener('click',()=> { // upon clicking the default button, it allows to change color.
@@ -81,10 +72,8 @@ function blackPaint(){ //black painter/marker/change background color function.
 }
 blackPaint(); //calls for blackPaint function
 
-
-
-
-function rainbowPaint(){ //rainbow painter function
+//create rainbow painter
+function rainbowPaint(){
   const gridBoxs = container.querySelectorAll('.grid-box');//selects class grid-box
   rainbow.addEventListener('click', () => {// click button to make function work
     gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',()=>{//draws when mouse enters gridbox
@@ -94,7 +83,7 @@ function rainbowPaint(){ //rainbow painter function
 }
 rainbowPaint()
 
-
+//creater eraser
 function eraserPaint(){ //eraser function that changes background color to default background color.
   const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
   eraser.addEventListener('click',()=> { // upon clicking the eraser button, it allows to change color.
@@ -106,7 +95,7 @@ function eraserPaint(){ //eraser function that changes background color to defau
 }
 eraserPaint(); //calls for eraser function
 
-
+//clears grid
 function clearMode() { //clears grid by refreshing page(lazy way)
   const clearGrid = document.querySelector('#clear'); //selects clear button
   clearGrid.onclick = () => { // clear grid/refresh page when mouse clicks on the button.
@@ -117,32 +106,15 @@ function clearMode() { //clears grid by refreshing page(lazy way)
 }
 clearMode(); //calls for clear grid/refresh page function
  
-
-
-
-
 function newGrid() {
   const newGridBox = document.querySelector('#new-grid')
-  
   newGridBox.addEventListener('click',()=>{
-    let newRows = prompt("how many rows?");
-    let newColumns = prompt("how many columns?");
-    console.log(newRows, newColumns);
-    gridBox();    
-
-    if ( newRows > 100 && newColumns > 100){
      
-      let newX = prompt("ERROR:please enter below 100 for rows");
-      let newY = prompt("ERROR:please enter below 100 for columns");
-
-      gridBox(newX, newY);
-    } 
   })
   
 }
 newGrid();
-
-
+//random color number generator
 function randomRainbow() {
   let letters = "0123456789ABCDEF";
     let color = "#";
@@ -151,7 +123,7 @@ function randomRainbow() {
     }
     return color;
 }
-
+//create footer html
 const footer = document.createElement("footer");
 footer.setAttribute("id", "footer-container");
 footer.textContent="Copyright @NorfKorean";
