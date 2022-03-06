@@ -116,8 +116,16 @@ clearMode();
  
 //create new grid
 function newGrid() {
+
+  //remove old grid
+  const gridBoxs = document.querySelectorAll('.grid-box');
+  function resetGrid(){
+    gridBoxs.forEach(gridBox => gridBox.remove())
+    container.remove()
+  }
+  
+  //new grid
   const newGridBox = document.querySelector('#new-grid')
-  const div = document.querySelectorAll('div');
   newGridBox.addEventListener('click',()=>{
     let newRow = prompt('how many rows?');
     let newCol = prompt('how many columns?');
