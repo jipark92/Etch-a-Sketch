@@ -62,14 +62,23 @@ body {
     border-radius: 10px;
 }
 
+#default-color:focus {
+    background-color: black;
+    color: white;
+}
+
 #rainbow {
     background-color: white;
     font-family: 'Source Code Pro', monospace;
     font-size: 20px;
     margin: 10px;
     padding: 15px;
-    border-radius: 10px;
-    
+    border-radius: 10px;   
+}
+
+#rainbow:focus {
+    background-color: black;
+    color: white;
 }
 
 #eraser{
@@ -81,6 +90,11 @@ body {
     border-radius: 10px;
 }
 
+#eraser:focus {
+    background-color: black;
+    color: white;
+}
+
 #clear{
     background-color: white;
     font-family: 'Source Code Pro', monospace;
@@ -90,6 +104,11 @@ body {
     border-radius: 10px;
 }
 
+#clear:focus {
+    background-color: black;
+    color: white;
+}
+
 #new-grid {
     background-color: white;
     font-family: 'Source Code Pro', monospace;
@@ -97,4 +116,9 @@ body {
     margin: 10px;
     padding: 15px;
     border-radius: 10px;
+}
+
+#new-grid:focus {
+    background-color: black;
+    color: white;
 }
