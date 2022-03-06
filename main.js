@@ -22,7 +22,7 @@ document.body.appendChild(optionsContainer);
 //default color mode: black in option
 const defaultColor = document.createElement("button");
 defaultColor.setAttribute("id", "default-color");
-defaultColor.textContent="Default Color Mode"; 
+defaultColor.textContent="Black Mode"; 
 optionsContainer.appendChild(defaultColor);
 
 //optional to do: rainbow mode**************
@@ -50,19 +50,25 @@ newGrids.textContent="New Grid";
 optionsContainer.appendChild(newGrids);
 
 //create grid
-function gridBox(columns, rows){ 
-  columns = 16;
-  rows = 16;
+function gridBox(col, row){ 
+  let columns = col;
+  let rows = row;
   for(let i=0;i<(columns * rows);i++){ // cols * rows = the grid size
     const div = document.createElement('div'); //creates DIV element on body
     container.appendChild(div).classList.add('grid-box')//adds div "class grid-box" to "div class main-container"
+    container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`
+    container.style.gridTemplateRows = `repeat(${rows}, 1fr)`
   }
 }
-gridBox() // calls grid creation function. 
+
+ // calls grid creation function. 
+ window.addEventListener('DOMContentLoaded',()=>{
+   gridBox();
+ })
 
 //create black painter
 function blackPaint(){ //black painter/marker/change background color function.
-  const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
+  const gridBoxs = document.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
   defaultColor.addEventListener('click',()=> { // upon clicking the default button, it allows to change color.
     gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',() =>{//selects each div grid-box when mouse is on top of div
       gridbox.style.background = 'black'; // change background color
@@ -74,7 +80,7 @@ blackPaint(); //calls for blackPaint function
 
 //create rainbow painter
 function rainbowPaint(){
-  const gridBoxs = container.querySelectorAll('.grid-box');//selects class grid-box
+  const gridBoxs = document.querySelectorAll('.grid-box');//selects class grid-box
   rainbow.addEventListener('click', () => {// click button to make function work
     gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',()=>{//draws when mouse enters gridbox
       gridbox.style.background = randomRainbow();//change to random color using random color generator function.
@@ -85,7 +91,7 @@ rainbowPaint()
 
 //creater eraser
 function eraserPaint(){ //eraser function that changes background color to default background color.
-  const gridBoxs = container.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
+  const gridBoxs = document.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
   eraser.addEventListener('click',()=> { // upon clicking the eraser button, it allows to change color.
     gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',() =>{//selects each div grid-box when mouse is on top of div
       gridbox.style.background = 'lightslategrey'; // change background color
@@ -100,7 +106,6 @@ function clearMode() { //clears grid by refreshing page(lazy way)
   const clearGrid = document.querySelector('#clear'); //selects clear button
   clearGrid.onclick = () => { // clear grid/refresh page when mouse clicks on the button.
     window.location.reload();// method to refresh page
-    
   }
   
 }
@@ -108,8 +113,16 @@ clearMode(); //calls for clear grid/refresh page function
  
 function newGrid() {
   const newGridBox = document.querySelector('#new-grid')
+  const div = document.querySelectorAll('div');
   newGridBox.addEventListener('click',()=>{
-     
+    let newRow = prompt('how many rows?');
+    let newCol = prompt('how many columns?');
+
+    gridBox(newRow,newCol)
+    blackPaint()
+    rainbowPaint()
+    eraserPaint()
+    // gridBox(newRow,newCol)
   })
   
 }
