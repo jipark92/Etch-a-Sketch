@@ -9,41 +9,41 @@ title.setAttribute("id", "title")
 title.textContent="Etch-A-Sketch";
 headerContainer.appendChild(title);
 
-//adds main container
+//create main container
 const container = document.createElement("main");
 container.classList.add("main-container");
 document.body.appendChild(container);
 
-//adds options div
+//create options div
 const optionsContainer = document.createElement("div");
 optionsContainer.classList.add("options-container");
 document.body.appendChild(optionsContainer);
 
-//default color mode: black in option
+//create black mode button
 const defaultColor = document.createElement("button");
 defaultColor.setAttribute("id", "default-color");
 defaultColor.textContent="Black Mode"; 
 optionsContainer.appendChild(defaultColor);
 
-//optional to do: rainbow mode**************
+//create rainbow mode button
 const rainbow = document.createElement("button");
 rainbow.setAttribute("id", "rainbow");
 rainbow.textContent="Rainbow Mode";
 optionsContainer.appendChild(rainbow);
 
-//eraser in options
+//create eraser mode button
 const eraser = document.createElement("button");
 eraser.setAttribute("id", "eraser");
 eraser.textContent="Eraser Mode"
 optionsContainer.appendChild(eraser);
 
-//clear grid in options buttons format 
+//create clear mode button
 const clear = document.createElement("button");
 clear.setAttribute("id", "clear");
 clear.textContent="Clear";
 optionsContainer.appendChild(clear);
 
-//new grid button
+//create new grid button
 const newGrids = document.createElement("button");
 newGrids.setAttribute("id", "new-grid");
 newGrids.textContent="New Grid";
@@ -53,80 +53,86 @@ optionsContainer.appendChild(newGrids);
 function gridBox(col, row){ 
   let columns = col;
   let rows = row;
-  for(let i=0;i<(columns * rows);i++){ // cols * rows = the grid size
-    const div = document.createElement('div'); //creates DIV element on body
-    container.appendChild(div).classList.add('grid-box')//adds div "class grid-box" to "div class main-container"
+  for(let i=0;i<(columns * rows);i++){ 
+    const div = document.createElement('div');
+    container.appendChild(div).classList.add('grid-box')
     container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`
     container.style.gridTemplateRows = `repeat(${rows}, 1fr)`
   }
 }
 
- // calls grid creation function. 
- window.addEventListener('DOMContentLoaded',()=>{
-   gridBox();
- })
+//load grid 
+ function loadGrid() {
+    window.addEventListener('DOMContentLoaded',()=>{
+    gridBox(16,16);
+    blackPaint();
+    rainbowPaint();
+    eraserPaint();
+  })
+ }
+ loadGrid();
 
-//create black painter
-function blackPaint(){ //black painter/marker/change background color function.
-  const gridBoxs = document.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
-  defaultColor.addEventListener('click',()=> { // upon clicking the default button, it allows to change color.
-    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',() =>{//selects each div grid-box when mouse is on top of div
-      gridbox.style.background = 'black'; // change background color
+//use black painter
+function blackPaint(){ 
+  const gridBoxs = document.querySelectorAll('.grid-box') 
+  defaultColor.addEventListener('click',()=> {
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',() =>{
+      gridbox.style.background = 'black';
     }))
   })
-
 }
-blackPaint(); //calls for blackPaint function
+blackPaint(); 
 
-//create rainbow painter
+//use rainbow painter
 function rainbowPaint(){
-  const gridBoxs = document.querySelectorAll('.grid-box');//selects class grid-box
-  rainbow.addEventListener('click', () => {// click button to make function work
-    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',()=>{//draws when mouse enters gridbox
-      gridbox.style.background = randomRainbow();//change to random color using random color generator function.
+  const gridBoxs = document.querySelectorAll('.grid-box');
+  rainbow.addEventListener('click', () => {
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',()=>{
+      gridbox.style.background = randomRainbow();
     }))
   })
 }
 rainbowPaint()
 
-//creater eraser
-function eraserPaint(){ //eraser function that changes background color to default background color.
-  const gridBoxs = document.querySelectorAll('.grid-box') //selects all DIV CLASS called "grid-box"
-  eraser.addEventListener('click',()=> { // upon clicking the eraser button, it allows to change color.
-    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',() =>{//selects each div grid-box when mouse is on top of div
-      gridbox.style.background = 'lightslategrey'; // change background color
+//use eraser
+function eraserPaint(){ 
+  const gridBoxs = document.querySelectorAll('.grid-box') 
+  eraser.addEventListener('click',()=> { 
+    gridBoxs.forEach(gridbox => gridbox.addEventListener('mouseenter',() =>{
+      gridbox.style.background = 'white'; 
     }))
   })
-
 }
-eraserPaint(); //calls for eraser function
+eraserPaint(); 
 
 //clears grid
-function clearMode() { //clears grid by refreshing page(lazy way)
-  const clearGrid = document.querySelector('#clear'); //selects clear button
-  clearGrid.onclick = () => { // clear grid/refresh page when mouse clicks on the button.
-    window.location.reload();// method to refresh page
+function clearMode() {
+  const clearGrid = document.querySelector('#clear'); 
+  clearGrid.onclick = () => { 
+    window.location.reload();
   }
-  
 }
-clearMode(); //calls for clear grid/refresh page function
+clearMode();
  
+//create new grid
 function newGrid() {
   const newGridBox = document.querySelector('#new-grid')
   const div = document.querySelectorAll('div');
   newGridBox.addEventListener('click',()=>{
     let newRow = prompt('how many rows?');
     let newCol = prompt('how many columns?');
-
-    gridBox(newRow,newCol)
-    blackPaint()
-    rainbowPaint()
-    eraserPaint()
-    // gridBox(newRow,newCol)
+    if (!newCol && !newRow || newCol >= "64" && newRow >="64"){
+      alert('You didnt submit any number or you exceeded grid amount.(amount below 64 only)');
+    } else if ( newCol && newRow){
+      gridBox(newRow,newCol)
+      blackPaint()
+      rainbowPaint()
+      eraserPaint()
+    }
   })
-  
 }
 newGrid();
+
 //random color number generator
 function randomRainbow() {
   let letters = "0123456789ABCDEF";
